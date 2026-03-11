@@ -18,7 +18,9 @@ function WeatherCard({ weatherData }) {
 
   return (
     <section className="weather-card">
-      <p className="weather-card__temp">{weatherData.temp.F} &deg; F</p>
+      <p className="weather-card__temp">
+        {Math.round(weatherData.temp.F)} &deg; F
+      </p>
       <img
         src={weatherOption?.url}
         alt={weatherOption?.condition}
