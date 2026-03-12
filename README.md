@@ -1,8 +1,8 @@
-# React + Vite
+# se_project_react
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is an introduction into using React. It is a What To Wear app, that filters clothing items depending on the current weather.
 
-Currently, two official plugins are available:
+To do this, we started with some initial clothing items, each assigned to either
+"Hot", "Warm", or "Cold" weather. The app interacts with a Weather API, gets the current weather, and filters the items to suggest What To Wear.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+In the future, I am looking to add responsive design, form validation, and the ability to add clothing options.

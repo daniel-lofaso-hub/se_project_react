@@ -16,13 +16,26 @@
 }
 
 .modal__title {
+  font-size: 16px;
+  line-height: 20px;
   margin: 0;
+}
+
+.modal__label {
+  padding: 0;
+  margin-top: 24px;
 }
 
 .modal__close {
   position: absolute;
   top: 20px;
   right: 28px;
+  background-image: url(../../assets/close-btn.png);
+  background-color: white;
+  height: 16px;
+  width: 16px;
+  border: none;
+  background-repeat: no-repeat;
 }
 
 .modal__content {
@@ -32,6 +45,7 @@
   max-width: 496px;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 20px;
 }
 
 .modal__form {
@@ -47,11 +61,43 @@
   border: 0;
   border-bottom: 1px solid black;
   padding: 0;
+  margin-top: 8px;
+  line-height: 20px;
+}
+
+.modal__legend {
+  padding-bottom: 12px;
 }
 
 .modal__radio-buttons {
   border: none;
   padding: 0;
+  margin: 24px 0 32px;
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  accent-color: black;
+}
+
+.modal__label_type_radio {
+  margin: 0;
+  line-height: 20px;
+  color: #00000080;
+}
+
+.modal__label_type_radio:checked {
+  color: black;
+}
+
+.modal__submit {
+  height: 36px;
+  width: 124px;
+  color: white;
+  background-color: #000000;
+  border-radius: 4px;
+  border: none;
+}
+
+.modal__submit:hover {
+  background-color: #00000099;
 }

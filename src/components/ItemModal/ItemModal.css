@@ -1,0 +1,41 @@
+.modal__content_type_image {
+  height: 610px;
+  width: 498px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  padding: 0;
+}
+
+.modal__image {
+  height: 498px;
+  width: 498px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.modal__footer {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 32px;
+  gap: 12px;
+}
+
+.modal__caption {
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+}
+
+.modal__weather {
+  font-size: 20px;
+  line-height: 24px;
+  margin: 0;
+}
+
+.modal__close_type_item {
+  background-image: url(../../assets/close-btn-white.png);
+  background-color: transparent;
+  top: 26px;
+  right: 26px;
+}

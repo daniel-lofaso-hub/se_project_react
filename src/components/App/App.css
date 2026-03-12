@@ -1,11 +1,14 @@
 .page {
   background-color: #f3f3f3;
-  font-family: "Cabinet-Grotesk";
+  font-family: "CabinetGrotesk-Bold";
   font-weight: 700;
 }
 
 .page__content {
   max-width: 1360px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 0 20px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }

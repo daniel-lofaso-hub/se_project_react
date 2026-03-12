@@ -1,4 +1,11 @@
 .footer {
   display: flex;
   justify-content: space-between;
+  font-family: "CabinetGrotesk-Medium";
+  font-weight: 500;
+  padding-bottom: 24px;
+}
+
+.footer__text {
+  margin: 0;
 }
