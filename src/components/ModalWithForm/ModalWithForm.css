@@ -36,6 +36,7 @@
   width: 16px;
   border: none;
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .modal__content {
