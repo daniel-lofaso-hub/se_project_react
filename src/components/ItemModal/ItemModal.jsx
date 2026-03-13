@@ -1,6 +1,22 @@
 import "./ItemModal.css";
+import { useEffect } from "react";
 
 function ItemModal({ isOpen, onClose, card }) {
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  });
   return (
     <div className={`modal  ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">
