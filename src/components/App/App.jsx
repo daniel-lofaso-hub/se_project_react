@@ -38,6 +38,11 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  const onAddItem = (inputValues) => {
+    setClothingItems([inputValues, ...clothingItems]);
+    closeActiveModal();
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -68,6 +73,7 @@ function App() {
 
         <AddItemModal
           isOpen={activeModal === "add-garment"}
+          onAddItem={onAddItem}
           onClose={closeActiveModal}
         />
         <ItemModal
