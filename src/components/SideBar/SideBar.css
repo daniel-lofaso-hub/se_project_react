@@ -1,0 +1,10 @@
+.side-bar__user-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.side-bar__avatar {
+  height: 56px;
+  width: 56px;
+}

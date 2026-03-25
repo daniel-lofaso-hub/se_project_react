@@ -7,6 +7,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
+import Profile from "../Profile/Profile";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { defaultClothingItems } from "../../utils/constants";
@@ -74,7 +75,15 @@ function App() {
                 />
               }
             />
-            <Route path="/profile" element={<p>Profile</p>} />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  clothingItems={clothingItems}
+                  onCardClick={handleCardClick}
+                />
+              }
+            />
           </Routes>
 
           <Footer />

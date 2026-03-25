@@ -30,6 +30,11 @@
   gap: 20px;
 }
 
+.header__nav-link {
+  color: black;
+  text-decoration: none;
+}
+
 .header__user-container {
   display: flex;
   align-items: center;

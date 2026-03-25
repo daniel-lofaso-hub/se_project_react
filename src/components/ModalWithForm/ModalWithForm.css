@@ -24,6 +24,7 @@
 .modal__label {
   padding: 0;
   margin-top: 24px;
+  font-size: 16px;
 }
 
 .modal__close {
@@ -68,6 +69,7 @@
 
 .modal__legend {
   padding-bottom: 12px;
+  font-size: 16px;
 }
 
 .modal__radio-buttons {
@@ -97,8 +99,13 @@
   background-color: #000000;
   border-radius: 4px;
   border: none;
+  font-size: 16px;
 }
 
 .modal__submit:hover {
   background-color: #00000099;
+}
+
+.modal__submit_disabled {
+  background-color: #0000004d;
 }
