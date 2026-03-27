@@ -10,8 +10,8 @@ import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
-import { defaultClothingItems } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import { addItem, getItems, deleteItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -23,7 +23,7 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
@@ -39,9 +39,29 @@ function App() {
     setActiveModal("add-garment");
   };
 
+  const handleDeleteItem = (selectedCard) => {
+    deleteItem(selectedCard.id)
+      .then((data) => {
+        console.log(selectedCard.id);
+        console.log(data);
+        debugger;
+        const itemId = selectedCard.id;
+        const filteredArray = clothingItems.filter((itemId) => {
+          return itemId != data.id;
+        });
+        setClothingItems([data, ...filteredArray]);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
   const onAddItem = (inputValues) => {
-    setClothingItems([inputValues, ...clothingItems]);
-    closeActiveModal();
+    addItem(inputValues)
+      .then((data) => {
+        setClothingItems([data, ...clothingItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   const closeActiveModal = () => {
@@ -53,6 +73,12 @@ function App() {
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+      })
+      .catch(console.error);
+
+    getItems()
+      .then((data) => {
+        setClothingItems(data.reverse());
       })
       .catch(console.error);
   }, []);
@@ -98,6 +124,7 @@ function App() {
           isOpen={activeModal === "preview"}
           card={selectedCard}
           onClose={closeActiveModal}
+          handleDelete={handleDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

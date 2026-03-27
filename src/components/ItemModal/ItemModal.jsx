@@ -1,7 +1,11 @@
 import "./ItemModal.css";
 import { useEffect } from "react";
 
-function ItemModal({ isOpen, onClose, card }) {
+function ItemModal({ isOpen, onClose, card, handleDelete }) {
+  const handleDeleteItem = (itemId) => {
+    handleDelete(itemId);
+  };
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -25,10 +29,19 @@ function ItemModal({ isOpen, onClose, card }) {
           type="button"
           className="modal__close modal__close_type_item"
         ></button>
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
-          <h2 className="modal__caption">{card.name}</h2>
-          <p className="modal__weather">Weather: {card.weather}</p>
+          <div className="modal__card-info">
+            <h2 className="modal__caption">{card.name}</h2>
+            <p className="modal__weather">Weather: {card.weather}</p>
+          </div>
+          <button
+            onClick={handleDeleteItem}
+            type="button"
+            className="modal__delete-item-btn"
+          >
+            Delete item
+          </button>
         </div>
       </div>
     </div>

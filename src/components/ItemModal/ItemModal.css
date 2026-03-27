@@ -16,6 +16,11 @@
 
 .modal__footer {
   display: flex;
+  justify-content: space-between;
+}
+
+.modal__card-info {
+  display: flex;
   flex-direction: column;
   padding: 30px 32px;
   gap: 12px;
@@ -38,4 +43,15 @@
   background-color: transparent;
   top: 26px;
   right: 26px;
+}
+
+.modal__delete-item-btn {
+  color: #ff4d00;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  height: 14px;
+  width: fill;
+  margin: 24.6px 33.56px 0 0;
 }
