@@ -39,15 +39,12 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const handleDeleteItem = (selectedCard) => {
-    deleteItem(selectedCard.id)
+  const handleDeleteItem = () => {
+    deleteItem(selectedCard._id)
       .then((data) => {
-        console.log(selectedCard.id);
-        console.log(data);
-        debugger;
-        const itemId = selectedCard.id;
-        const filteredArray = clothingItems.filter((itemId) => {
-          return itemId != data.id;
+        const id = selectedCard._id;
+        const filteredArray = clothingItems.filter((selectedCard) => {
+          return selectedCard._id != id;
         });
         setClothingItems([data, ...filteredArray]);
         closeActiveModal();
@@ -106,7 +103,7 @@ function App() {
               element={
                 <Profile
                   clothingItems={clothingItems}
-                  onCardClick={handleCardClick}
+                  handleCardClick={handleCardClick}
                 />
               }
             />

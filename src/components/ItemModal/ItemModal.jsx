@@ -2,8 +2,8 @@ import "./ItemModal.css";
 import { useEffect } from "react";
 
 function ItemModal({ isOpen, onClose, card, handleDelete }) {
-  const handleDeleteItem = (itemId) => {
-    handleDelete(itemId);
+  const handleDeleteItem = () => {
+    handleDelete(card);
   };
 
   useEffect(() => {
