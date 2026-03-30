@@ -16,6 +16,8 @@ To do this, we started with some initial clothing items, each assigned to either
 
 We also set up a mock server that holds all our clothing items, and we can add or delete clothing items in the app, which makes a call to the server and either post or delete those items.
 
+In the future, I am looking to add responsive design and form validation.
+
 **Figma**
 
 - [Link to the project on Figma](https://www.figma.com/design/dQLJwEKasIdspciJAJrCaf/Sprint-11_-WTWR?node-id=311-433&p=f&t=kNVLFARzVpHD44c2-0)
@@ -26,4 +28,4 @@ We also set up a mock server that holds all our clothing items, and we can add o
 
 **Project Pitch**
 
-- [React Final Pitch]()
+- [React Final Pitch](https://www.loom.com/share/4795878e79ac4126a6da9cf60279fcb8)
