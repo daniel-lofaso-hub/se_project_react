@@ -20,7 +20,7 @@ function ItemModal({ isOpen, onClose, card, handleDelete }) {
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  });
+  }, [isOpen]);
   return (
     <div className={`modal  ${isOpen ? "modal_opened" : ""}`}>
       <div className="modal__content modal__content_type_image">

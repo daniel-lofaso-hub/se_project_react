@@ -24,7 +24,7 @@ function ModalWithForm({
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  });
+  }, [isOpen]);
 
   return (
     <div className={`modal modal_type_${name} ${isOpen ? "modal_opened" : ""}`}>

@@ -25,6 +25,16 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [formData, setFormData] = useState({
+    name: "",
+    imageUrl: "",
+    weather: "",
+  });
+
+  const handleFormReset = (inputValues) => {
+    setFormData(inputValues);
+    console.log(formData);
+  };
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -36,17 +46,15 @@ function App() {
   };
 
   const handleAddClick = () => {
+    handleFormReset();
     setActiveModal("add-garment");
   };
 
   const handleDeleteItem = () => {
     deleteItem(selectedCard._id)
-      .then((data) => {
+      .then(() => {
         const id = selectedCard._id;
-        const filteredArray = clothingItems.filter((selectedCard) => {
-          return selectedCard._id != id;
-        });
-        setClothingItems([data, ...filteredArray]);
+        setClothingItems((prev) => prev.filter((item) => item._id !== id));
         closeActiveModal();
       })
       .catch(console.error);
