@@ -67,6 +67,17 @@
   line-height: 20px;
 }
 
+.modal__input_error {
+  border-bottom-color: #ff0000;
+}
+
+.modal__error {
+  color: #ff0000;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
 .modal__legend {
   padding-bottom: 12px;
   font-size: 16px;
@@ -80,6 +91,10 @@
   flex-direction: column;
   gap: 8px;
   accent-color: black;
+}
+
+.modal__radio-buttons_error {
+  accent-color: #ff0000;
 }
 
 .modal__label_type_radio {

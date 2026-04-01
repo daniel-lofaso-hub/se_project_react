@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { coordinates, apiKey } from "../../utils/constants";
+import { apiKey } from "../../utils/constants";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -14,6 +14,11 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { addItem, getItems, deleteItem } from "../../utils/api";
 
 function App() {
+  const fallbackCoordinates = {
+    latitude: 34.2257,
+    longitude: -77.9447,
+  };
+
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 999, C: 999 },
@@ -21,6 +26,7 @@ function App() {
     condition: "",
     isDay: true,
   });
+  const [locationCoords, setLocationCoords] = useState(fallbackCoordinates);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
@@ -33,7 +39,6 @@ function App() {
 
   const handleFormReset = (inputValues) => {
     setFormData(inputValues);
-    console.log(formData);
   };
 
   const handleToggleSwitchChange = () => {
@@ -74,7 +79,36 @@ function App() {
   };
 
   useEffect(() => {
-    getWeather(coordinates, apiKey)
+    if (!navigator.geolocation) {
+      console.warn("Geolocation is not available; using fallback coordinates.");
+      setLocationCoords(fallbackCoordinates);
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setLocationCoords({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      (error) => {
+        console.warn(
+          "Geolocation failed, using fallback coordinates:",
+          error.message,
+        );
+        setLocationCoords(fallbackCoordinates);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 60 * 1000,
+      },
+    );
+  }, []);
+
+  useEffect(() => {
+    getWeather(locationCoords, apiKey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
@@ -86,7 +120,7 @@ function App() {
         setClothingItems(data.reverse());
       })
       .catch(console.error);
-  }, []);
+  }, [locationCoords]);
 
   return (
     <CurrentTemperatureUnitContext.Provider
