@@ -1,10 +1,17 @@
+import { useContext } from "react";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.svg";
-import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  onLoginClick,
+  onRegisterClick,
+  weatherData,
+}) {
+  const currentUser = useContext(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -22,23 +29,54 @@ function Header({ handleAddClick, weatherData }) {
       </div>
       <div className="header__nav">
         <ToggleSwitch />
-        <button
-          onClick={handleAddClick}
-          type="button"
-          className="header__add-clothes-btn"
-        >
-          + Add Clothes
-        </button>
-        <NavLink className="header__nav-link" to="/profile">
-          <div className="header__user-container">
-            <p className="header__username">Terrence Tegegne</p>
-            <img
-              src={avatar}
-              alt="Terrence Tegegne"
-              className="header__avatar"
-            />
+        {currentUser ? (
+          <>
+            <button
+              onClick={handleAddClick}
+              type="button"
+              className="header__add-clothes-btn"
+            >
+              + Add Clothes
+            </button>
+            <NavLink className="header__nav-link" to="/profile">
+              <div className="header__user-container">
+                <p className="header__username">
+                  {currentUser.name || currentUser.email || "User"}
+                </p>
+                {currentUser.avatar ? (
+                  <img
+                    src={currentUser.avatar}
+                    alt={currentUser.name || "User"}
+                    className="header__avatar"
+                  />
+                ) : (
+                  <div className="header__avatar-placeholder">
+                    {(currentUser.name ||
+                      currentUser.email ||
+                      "U")[0].toUpperCase()}
+                  </div>
+                )}
+              </div>
+            </NavLink>
+          </>
+        ) : (
+          <div className="header__auth-buttons">
+            <button
+              type="button"
+              className="header__auth-btn"
+              onClick={onLoginClick}
+            >
+              Log in
+            </button>
+            <button
+              type="button"
+              className="header__auth-btn header__auth-btn_type_primary"
+              onClick={onRegisterClick}
+            >
+              Sign up
+            </button>
           </div>
-        </NavLink>
+        )}
       </div>
     </header>
   );

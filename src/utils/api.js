@@ -8,10 +8,14 @@ export const handleServerResponse = (res) => {
 export const getItems = () =>
   fetch(`${baseUrl}/items`, { headers }).then(handleServerResponse);
 
-export const addItem = ({ name, imageUrl, weather }) => {
+export const addItem = ({ name, imageUrl, weather }, token) => {
+  const requestHeaders = {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${token}`,
+  };
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers,
+    headers: requestHeaders,
 
     body: JSON.stringify({
       name,
@@ -21,9 +25,13 @@ export const addItem = ({ name, imageUrl, weather }) => {
   }).then(handleServerResponse);
 };
 
-export const deleteItem = (itemId) => {
+export const deleteItem = (itemId, token) => {
+  const requestHeaders = {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${token}`,
+  };
   return fetch(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
-    headers,
+    headers: requestHeaders,
   }).then(handleServerResponse);
 };

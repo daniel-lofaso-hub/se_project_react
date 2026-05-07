@@ -25,6 +25,7 @@ In the future, I am looking to add responsive design and form validation.
 **Github**
 
 - [Link to the project on Github](https://daniel-lofaso-hub.github.io/se_project_react/)
+- [Link to the back-end on Github](https://daniel-lofaso-hub.github.io/se_project_express/)
 
 **Project Pitch**
 
