@@ -63,17 +63,17 @@ function Header({
           <div className="header__auth-buttons">
             <button
               type="button"
-              className="header__auth-btn"
-              onClick={onLoginClick}
-            >
-              Log in
-            </button>
-            <button
-              type="button"
-              className="header__auth-btn header__auth-btn_type_primary"
+              className="header__register-btn"
               onClick={onRegisterClick}
             >
               Sign up
+            </button>
+            <button
+              type="button"
+              className="header__login-btn"
+              onClick={onLoginClick}
+            >
+              Log in
             </button>
           </div>
         )}

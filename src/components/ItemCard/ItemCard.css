@@ -8,17 +8,36 @@
   border-radius: 20px;
 }
 
-.card__name {
+.card__info {
+  display: flex;
+  gap: 10px;
   position: absolute;
   top: 15px;
-  margin: 0;
+}
+
+.card__name {
   font-size: 16px;
   line-height: 20px;
   opacity: 0.6;
   background-color: white;
-  padding: 2px 12px;
+  margin: 0;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.card__like {
+  height: 15px;
+  width: 18px;
+  background-image: url(../../assets/like-btn-default.png);
+  border: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.card__like_active {
+  background-image: url(../../assets/like-btn-isliked.png);
 }
 
 .card__image {

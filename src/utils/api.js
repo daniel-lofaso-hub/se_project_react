@@ -35,3 +35,25 @@ export const deleteItem = (itemId, token) => {
     headers: requestHeaders,
   }).then(handleServerResponse);
 };
+
+export const addCardLike = (itemId, token) => {
+  const requestHeaders = {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${token}`,
+  };
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "PUT",
+    headers: requestHeaders,
+  }).then(handleServerResponse);
+};
+
+export const removeCardLike = (itemId, token) => {
+  const requestHeaders = {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${token}`,
+  };
+  return fetch(`${baseUrl}/items/${itemId}/likes`, {
+    method: "DELETE",
+    headers: requestHeaders,
+  }).then(handleServerResponse);
+};

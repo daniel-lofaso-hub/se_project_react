@@ -1,12 +1,14 @@
 .side-bar__user-container {
   display: flex;
-  justify-content: center;
+  align-items: center;
   gap: 16px;
 }
 
 .side-bar__avatar {
   height: 56px;
   width: 56px;
+  border-radius: 50%;
+  border: 1px solid #00000080;
 }
 
 .side-bar__avatar-placeholder {
@@ -16,12 +18,36 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: #f0f0f0;
+  background-color: #00000033;
   color: #333;
+  border: 1px solid #00000080;
   font-size: 20px;
   font-weight: 700;
 }
 
 .side-bar__username {
   margin: 0;
+}
+
+.side-bar__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.side-bar__edit-profile-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+}
+
+.side-bar__logout-btn {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
+  text-align: left;
 }

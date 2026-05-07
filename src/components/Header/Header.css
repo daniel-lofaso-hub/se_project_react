@@ -45,6 +45,13 @@
   margin: 0;
 }
 
+.header__avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid #00000080;
+}
+
 .header__avatar-placeholder {
   display: inline-flex;
   align-items: center;
@@ -52,8 +59,11 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #f0f0f0;
+
+  background-color: #00000033;
   color: #333;
+  border: 1px solid #00000080;
+
   font-size: 16px;
   font-weight: 700;
 }
@@ -61,19 +71,19 @@
 .header__auth-buttons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 }
 
-.header__auth-btn {
-  padding: 10px 16px;
+.header__login-btn {
   border: none;
   background: transparent;
   cursor: pointer;
-  font-size: 14px;
+  padding: 0;
 }
 
-.header__auth-btn_type_primary {
-  background-color: #000;
-  color: #fff;
-  border-radius: 8px;
+.header__register-btn {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  padding: 0;
 }

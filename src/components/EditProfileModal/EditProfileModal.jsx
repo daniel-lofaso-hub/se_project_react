@@ -1,24 +1,16 @@
 import { useFormWithValidation } from "../../hooks/useFormWithValidation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
+const EditProfileModal = ({ isOpen, onUpdateUser, onClose }) => {
+  const currentUser = useContext(CurrentUserContext);
   const defaultValues = {
-    email: "",
-    password: "",
     name: "",
     avatar: "",
   };
 
   const validationRules = {
-    email: {
-      required: true,
-      requiredMessage: "Email is required",
-    },
-    password: {
-      required: true,
-      requiredMessage: "Password is required",
-    },
     name: {
       required: true,
       requiredMessage: "Name is required",
@@ -40,23 +32,28 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
     handleBlur,
     validateForm,
     resetForm,
+    setValues,
   } = useFormWithValidation(defaultValues, validationRules);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
-      resetForm();
-      validateForm();
+    if (isOpen && currentUser) {
+      setValues({
+        name: currentUser.name || "",
+        avatar: currentUser.avatar || "",
+      });
       setIsSubmitted(false);
+      // Validate after setting values
+      setTimeout(() => validateForm(), 0);
     }
-  }, [isOpen]);
+  }, [isOpen, currentUser, setValues]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
     setIsSubmitted(true);
     if (validateForm()) {
-      onRegister(values);
+      onUpdateUser(values);
       resetForm();
       setIsSubmitted(false);
     }
@@ -64,55 +61,13 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
 
   return (
     <ModalWithForm
-      title="Sign up"
-      buttonText="Next"
-      name="sign-up"
+      title="Change profile data"
+      buttonText="Save changes"
+      name="edit-profile"
       onClose={onClose}
       onSubmit={handleSubmit}
       isOpen={isOpen}
-      disabled={!isValid || isSubmitted}
-      secondaryButton={
-        <button
-          type="button"
-          className="modal__secondary-btn"
-          onClick={onLoginClick}
-        >
-          or Log in
-        </button>
-      }
     >
-      <label htmlFor="email" className="modal__label">
-        Email*{" "}
-        <input
-          type="email"
-          className={`modal__input ${isSubmitted && errors.email ? "modal__input_error" : ""}`}
-          name="email"
-          id="email"
-          placeholder="Email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        {isSubmitted && errors.email && (
-          <span className="modal__error">{errors.email}</span>
-        )}
-      </label>
-      <label htmlFor="password" className="modal__label">
-        Password*{" "}
-        <input
-          type="password"
-          className={`modal__input ${isSubmitted && errors.password ? "modal__input_error" : ""}`}
-          name="password"
-          id="password"
-          placeholder="Password"
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        {isSubmitted && errors.password && (
-          <span className="modal__error">{errors.password}</span>
-        )}
-      </label>
       <label htmlFor="name" className="modal__label">
         Name{" "}
         <input
@@ -149,4 +104,4 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
   );
 };
 
-export default RegisterModal;
+export default EditProfileModal;

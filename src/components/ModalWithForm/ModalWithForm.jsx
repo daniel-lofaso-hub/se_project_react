@@ -9,6 +9,8 @@ function ModalWithForm({
   isOpen,
   onClose,
   onSubmit,
+  disabled = false,
+  secondaryButton,
 }) {
   useEffect(() => {
     if (!isOpen) return;
@@ -37,10 +39,18 @@ function ModalWithForm({
         ></button>
         <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button type="submit" className="modal__submit">
+        </form>
+        <div className="modal__buttons">
+          <button
+            type="submit"
+            className={`modal__submit modal__submit_type_${name} ${disabled ? "modal__submit_disabled" : ""}`}
+            disabled={disabled}
+            onClick={onSubmit}
+          >
             {buttonText}
           </button>
-        </form>
+          {secondaryButton}
+        </div>
       </div>
     </div>
   );

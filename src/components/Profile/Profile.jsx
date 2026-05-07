@@ -7,10 +7,15 @@ export default function Profile({
   clothingItems,
   handleCardClick,
   handleAddClick,
+  onEditProfileClick,
+  onLogoutClick,
 }) {
   return (
     <section className="profile">
-      <SideBar />
+      <SideBar
+        onEditProfileClick={onEditProfileClick}
+        onLogoutClick={onLogoutClick}
+      />
       <ClothesSection
         clothingItems={clothingItems}
         onCardClick={handleCardClick}

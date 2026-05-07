@@ -42,6 +42,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   useEffect(() => {
     if (isOpen) {
       resetForm();
+      validateForm();
       setIsSubmitted(false);
     }
   }, [isOpen]);
