@@ -11,12 +11,7 @@
 
 This project is an introduction into using React. It is a What To Wear app, that filters clothing items depending on the current weather (with functionality in F or C).
 
-To do this, we started with some initial clothing items, each assigned to either
-"Hot", "Warm", or "Cold" weather. The app interacts with a Weather API, gets the current weather, and filters the items to suggest What To Wear.
-
-We also set up a mock server that holds all our clothing items, and we can add or delete clothing items in the app, which makes a call to the server and either post or delete those items.
-
-In the future, I am looking to add responsive design and form validation.
+The app utizlizes an API we built to send requests to our server. Anyone can register, login, edit their profile, and upload or delete clothing items to that server.
 
 **Figma**
 
@@ -29,4 +24,4 @@ In the future, I am looking to add responsive design and form validation.
 
 **Project Pitch**
 
-- [React Final Pitch](https://www.loom.com/share/4795878e79ac4126a6da9cf60279fcb8)
+- [React Project Pitch](https://www.loom.com/share/4795878e79ac4126a6da9cf60279fcb8)

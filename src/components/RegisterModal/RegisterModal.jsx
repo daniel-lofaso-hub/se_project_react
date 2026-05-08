@@ -14,6 +14,8 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
     email: {
       required: true,
       requiredMessage: "Email is required",
+      pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      patternMessage: "(this is not a email address)",
     },
     password: {
       required: true,

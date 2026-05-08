@@ -247,6 +247,10 @@ function App() {
       .catch(console.error);
   }, [locationCoords]);
 
+  useEffect(() => {
+    console.log("isLoggedIn changed to:", isLoggedIn);
+  }, [isLoggedIn]);
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}

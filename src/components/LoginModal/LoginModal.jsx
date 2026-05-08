@@ -12,6 +12,8 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
     email: {
       required: true,
       requiredMessage: "Email is required",
+      pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      patternMessage: "(this is not a email address)",
     },
     password: {
       required: true,
@@ -34,7 +36,6 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
   useEffect(() => {
     if (isOpen) {
       resetForm();
-      validateForm();
       setIsSubmitted(false);
     }
   }, [isOpen]);

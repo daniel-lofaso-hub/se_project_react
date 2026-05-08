@@ -9,7 +9,7 @@ function ModalWithForm({
   isOpen,
   onClose,
   onSubmit,
-  disabled = false,
+  disabled,
   secondaryButton,
 }) {
   useEffect(() => {

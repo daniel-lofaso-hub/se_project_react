@@ -117,6 +117,10 @@
   font-size: 16px;
 }
 
+.modal__submit:hover {
+  background-color: #00000099;
+}
+
 .modal__submit_type_sign-up {
   width: 65px;
 }
