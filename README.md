@@ -19,8 +19,7 @@ The app utizlizes an API we built to send requests to our server. Anyone can reg
 
 **Github**
 
-- [Link to the project on Github](https://daniel-lofaso-hub.github.io/se_project_react/)
-- [Link to the back-end on Github](https://daniel-lofaso-hub.github.io/se_project_express/)
+- [Link to the back-end on Github](https://github.com/daniel-lofaso-hub/se_project_express)
 
 **Project Pitch**
 

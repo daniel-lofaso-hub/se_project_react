@@ -27,7 +27,6 @@ const EditProfileModal = ({ isOpen, onUpdateUser, onClose }) => {
   const {
     values,
     errors,
-    isValid,
     handleChange,
     handleBlur,
     validateForm,
@@ -74,7 +73,7 @@ const EditProfileModal = ({ isOpen, onUpdateUser, onClose }) => {
           type="text"
           className={`modal__input ${isSubmitted && errors.name ? "modal__input_error" : ""}`}
           name="name"
-          id="name"
+          id="edit-name"
           placeholder="Name"
           value={values.name}
           onChange={handleChange}
@@ -90,7 +89,7 @@ const EditProfileModal = ({ isOpen, onUpdateUser, onClose }) => {
           type="url"
           className={`modal__input ${isSubmitted && errors.avatar ? "modal__input_error" : ""}`}
           name="avatar"
-          id="avatar"
+          id="edit-avatar"
           placeholder="Avatar URL"
           value={values.avatar}
           onChange={handleChange}

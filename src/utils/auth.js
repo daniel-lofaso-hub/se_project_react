@@ -1,11 +1,9 @@
+import { handleServerResponse } from "./api";
+
 const baseUrl = "http://localhost:3001";
 const headers = {
   Accept: "application/json",
   "Content-Type": "application/json",
-};
-
-export const handleServerResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 };
 
 export const signUp = ({ email, password, name, avatar }) => {

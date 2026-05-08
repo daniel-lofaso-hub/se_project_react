@@ -42,6 +42,7 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    console.log("Submitted");
     setIsSubmitted(true);
     if (validateForm()) {
       onLogin(values);
@@ -75,7 +76,7 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
           type="email"
           className={`modal__input ${isSubmitted && errors.email ? "modal__input_error" : ""}`}
           name="email"
-          id="email"
+          id="login-email"
           placeholder="Email"
           value={values.email}
           onChange={handleChange}
@@ -91,7 +92,7 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
           type="password"
           className={`modal__input ${isSubmitted && errors.password ? "modal__input_error" : ""}`}
           name="password"
-          id="password"
+          id="login-password"
           placeholder="Password"
           value={values.password}
           onChange={handleChange}

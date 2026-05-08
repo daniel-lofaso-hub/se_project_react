@@ -89,7 +89,7 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
           type="email"
           className={`modal__input ${isSubmitted && errors.email ? "modal__input_error" : ""}`}
           name="email"
-          id="email"
+          id="register-email"
           placeholder="Email"
           value={values.email}
           onChange={handleChange}
@@ -105,7 +105,7 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
           type="password"
           className={`modal__input ${isSubmitted && errors.password ? "modal__input_error" : ""}`}
           name="password"
-          id="password"
+          id="register-password"
           placeholder="Password"
           value={values.password}
           onChange={handleChange}
@@ -121,7 +121,7 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
           type="text"
           className={`modal__input ${isSubmitted && errors.name ? "modal__input_error" : ""}`}
           name="name"
-          id="name"
+          id="register-name"
           placeholder="Name"
           value={values.name}
           onChange={handleChange}
@@ -137,7 +137,7 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
           type="url"
           className={`modal__input ${isSubmitted && errors.avatar ? "modal__input_error" : ""}`}
           name="avatar"
-          id="avatar"
+          id="register-avatar"
           placeholder="Avatar URL"
           value={values.avatar}
           onChange={handleChange}

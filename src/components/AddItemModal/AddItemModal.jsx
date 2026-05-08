@@ -27,15 +27,8 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     },
   };
 
-  const {
-    values,
-    errors,
-    isValid,
-    handleChange,
-    handleBlur,
-    validateForm,
-    resetForm,
-  } = useFormWithValidation(defaultValues, validationRules);
+  const { values, errors, handleChange, handleBlur, validateForm, resetForm } =
+    useFormWithValidation(defaultValues, validationRules);
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -72,7 +65,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           type="text"
           className={`modal__input ${isSubmitted && errors.name ? "modal__input_error" : ""}`}
           name="name"
-          id="name"
+          id="add-name"
           placeholder="Name"
           value={values.name}
           onChange={handleChange}
@@ -88,7 +81,7 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           type="url"
           className={`modal__input ${isSubmitted && errors.imageUrl ? "modal__input_error" : ""}`}
           name="imageUrl"
-          id="imageUrl"
+          id="add-imageUrl"
           placeholder="Image URL"
           value={values.imageUrl}
           onChange={handleChange}
