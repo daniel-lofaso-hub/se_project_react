@@ -59,7 +59,6 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
     setIsSubmitted(true);
     if (validateForm()) {
       onRegister(values);
-      resetForm();
       setIsSubmitted(false);
     }
   }
@@ -83,7 +82,7 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
         </button>
       }
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="register-email" className="modal__label">
         Email*{" "}
         <input
           type="email"
@@ -99,7 +98,7 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
           <span className="modal__error">{errors.email}</span>
         )}
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="register-password" className="modal__label">
         Password*{" "}
         <input
           type="password"
@@ -115,7 +114,7 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
           <span className="modal__error">{errors.password}</span>
         )}
       </label>
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="register-name" className="modal__label">
         Name{" "}
         <input
           type="text"
@@ -131,7 +130,7 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
           <span className="modal__error">{errors.name}</span>
         )}
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label htmlFor="register-avatar" className="modal__label">
         Avatar URL{" "}
         <input
           type="url"

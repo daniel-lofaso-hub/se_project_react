@@ -46,7 +46,6 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
     setIsSubmitted(true);
     if (validateForm()) {
       onLogin(values);
-      resetForm();
       setIsSubmitted(false);
     }
   }
@@ -70,7 +69,7 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
         </button>
       }
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="login-email" className="modal__label">
         Email*{" "}
         <input
           type="email"
@@ -86,7 +85,7 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
           <span className="modal__error">{errors.email}</span>
         )}
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="login-password" className="modal__label">
         Password*{" "}
         <input
           type="password"
