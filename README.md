@@ -15,7 +15,7 @@ The app utizlizes an API we built to send requests to our server. Anyone can reg
 
 **Figma**
 
-- [Link to the project on Figma](https://www.figma.com/design/dQLJwEKasIdspciJAJrCaf/Sprint-11_-WTWR?node-id=311-433&p=f&t=kNVLFARzVpHD44c2-0)
+- [Link to the project on Figma](https://www.figma.com/design/BlrieGhuUXMk3OUbi4bHGC/Sprint-14--WTWR?node-id=0-1&p=f&t=PCu0zOqSXop9FqXG-0)
 
 **Github**
 
