@@ -54,12 +54,15 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
     }
   }, [isOpen]);
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
     setIsSubmitted(true);
     if (validateForm()) {
-      onRegister(values);
-      setIsSubmitted(false);
+      try {
+        await onRegister(values);
+      } catch (error) {
+        setIsSubmitted(false);
+      }
     }
   }
 
