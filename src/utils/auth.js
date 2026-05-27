@@ -1,6 +1,6 @@
 import { handleServerResponse } from "./api";
+import { baseUrl } from "./constants";
 
-const baseUrl = "http://localhost:3001";
 const headers = {
   Accept: "application/json",
   "Content-Type": "application/json",
