@@ -116,7 +116,7 @@ function App() {
   };
 
   const onRegister = (inputValues) => {
-    return signUp(inputValues)
+    signUp(inputValues)
       .then((data) => {
         const token = data?.token;
         if (!token) {
@@ -134,7 +134,7 @@ function App() {
   };
 
   const onLogin = (inputValues) => {
-    return signIn(inputValues)
+    signIn(inputValues)
       .then((data) => {
         const token = data?.token;
         if (!token) {

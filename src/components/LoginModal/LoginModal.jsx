@@ -40,16 +40,13 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
     }
   }, [isOpen]);
 
-  async function handleSubmit(evt) {
+  function handleSubmit(evt) {
     evt.preventDefault();
     console.log("Submitted");
     setIsSubmitted(true);
     if (validateForm()) {
-      try {
-        await onLogin(values);
-      } catch (error) {
-        setIsSubmitted(false);
-      }
+      onLogin(values);
+      setIsSubmitted(false);
     }
   }
 
