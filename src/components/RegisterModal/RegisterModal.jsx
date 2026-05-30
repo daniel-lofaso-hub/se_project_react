@@ -61,8 +61,12 @@ const RegisterModal = ({ isOpen, onRegister, onClose, onLoginClick }) => {
       try {
         await onRegister(values);
         setIsSubmitted(false);
+        return;
       } catch (error) {
         setIsSubmitted(false);
+        return typeof error === "string"
+          ? error
+          : error?.message || "Something went wrong";
       }
     }
   }

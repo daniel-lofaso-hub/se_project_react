@@ -51,6 +51,17 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const getErrorMessage = (error) => {
+    const message =
+      typeof error === "string"
+        ? error
+        : error?.message ||
+          (typeof error === "object" ? JSON.stringify(error) : String(error));
+    return message && message !== "[object Object]"
+      ? message
+      : "Something went wrong";
+  };
+
   const handleFormReset = (inputValues) => {
     setFormData(inputValues);
   };
@@ -100,12 +111,15 @@ function App() {
 
   const onAddItem = (inputValues) => {
     const token = localStorage.getItem("jwt");
-    addItem(inputValues, token)
+    return addItem(inputValues, token)
       .then((data) => {
         setClothingItems([data, ...clothingItems]);
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        return Promise.reject(getErrorMessage(err));
+      });
   };
 
   const saveCurrentUser = (data) => {
@@ -130,7 +144,10 @@ function App() {
         setIsLoggedIn(true);
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        return Promise.reject(getErrorMessage(err));
+      });
   };
 
   const onLogin = (inputValues) => {
@@ -148,17 +165,23 @@ function App() {
         setIsLoggedIn(true);
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        return Promise.reject(getErrorMessage(err));
+      });
   };
 
   const onUpdateUser = (inputValues) => {
     const token = localStorage.getItem("jwt");
-    updateUser(inputValues, token)
+    return updateUser(inputValues, token)
       .then((userData) => {
         saveCurrentUser(userData);
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        return Promise.reject(getErrorMessage(err));
+      });
   };
 
   const closeActiveModal = () => {

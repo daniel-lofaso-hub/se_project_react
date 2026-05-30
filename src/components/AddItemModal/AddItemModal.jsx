@@ -40,12 +40,20 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
     }
   }, [isOpen]);
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
     setIsSubmitted(true);
     if (validateForm()) {
-      onAddItem(values);
-      setIsSubmitted(false);
+      try {
+        await onAddItem(values);
+        setIsSubmitted(false);
+        return;
+      } catch (error) {
+        setIsSubmitted(false);
+        return typeof error === "string"
+          ? error
+          : error?.message || "Something went wrong";
+      }
     }
   }
 

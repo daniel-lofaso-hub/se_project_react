@@ -48,13 +48,21 @@ const EditProfileModal = ({ isOpen, onUpdateUser, onClose }) => {
     }
   }, [isOpen, currentUser, setValues]);
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
     setIsSubmitted(true);
     if (validateForm()) {
-      onUpdateUser(values);
-      resetForm();
-      setIsSubmitted(false);
+      try {
+        await onUpdateUser(values);
+        resetForm();
+        setIsSubmitted(false);
+        return;
+      } catch (error) {
+        setIsSubmitted(false);
+        return typeof error === "string"
+          ? error
+          : error?.message || "Something went wrong";
+      }
     }
   }
 

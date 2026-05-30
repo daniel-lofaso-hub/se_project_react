@@ -2,8 +2,36 @@ import { baseUrl } from "./constants";
 
 const headers = { "Content-Type": "application/json" };
 
-export const handleServerResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+export const handleServerResponse = async (res) => {
+  if (res.ok) return res.json();
+
+  const friendlyStatusMessage = {
+    401: "Incorrect email or password",
+    409: "That email is already in use",
+  };
+
+  const defaultMessage = res.statusText || `Error: ${res.status}`;
+  let serverMessage = defaultMessage;
+
+  try {
+    const data = await res.json();
+    if (typeof data === "string") {
+      serverMessage = data;
+    } else if (data) {
+      serverMessage =
+        data.message ||
+        data.error ||
+        data?.errors?.[0]?.message ||
+        defaultMessage;
+    }
+  } catch {
+    serverMessage = defaultMessage;
+  }
+
+  if (friendlyStatusMessage[res.status]) {
+    return Promise.reject(friendlyStatusMessage[res.status]);
+  }
+  return Promise.reject(serverMessage);
 };
 
 export const getItems = () =>

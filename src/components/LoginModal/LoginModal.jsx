@@ -48,8 +48,12 @@ const LoginModal = ({ isOpen, onLogin, onClose, onRegisterClick }) => {
       try {
         await onLogin(values);
         setIsSubmitted(false);
+        return;
       } catch (error) {
         setIsSubmitted(false);
+        return typeof error === "string"
+          ? error
+          : error?.message || "Something went wrong";
       }
     }
   }
